@@ -1,0 +1,11 @@
+enemies={'trainingdummy':{'name':'Training Dummy',
+                          'lvl':1,
+                          'HPfull':10,
+                          'HP':10,
+                          'dex':0,
+                          'agi':2,
+                          'int':0,
+                          'luk':0,
+                          'firepower':0,
+                          'resistance':1},
+         }
