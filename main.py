@@ -171,7 +171,7 @@ def tutorial():
 #             '...........................................................................'
 #    screen.screengame(bar, screename, text, optiontitle, options)
 #
-#    while screen.entrada is not '6':
+#    while screen.inpt is not '6':
 #        screen.screengame(bar, screename, text, optiontitle, options)
 #
 #    text = f'Infelizmente você não possui nenhuma nave no momento... Mas aqui será o lugar para visualizar informações como nível de energia, estado de avaria, tripulação, carregamento, etc.'
@@ -194,7 +194,7 @@ def tutorial():
              f'...........................................................................'
     screen.screengame(bar, screename, text, optiontitle, options)
 
-    while screen.entrada is not '5':
+    while screen.inpt is not '5':
         screen.screengame(bar, screename, text, optiontitle, options)
 
     text = f"The messages will show up as you progress in the game, they will indicate the possibility of accept a quest somewhere in the galaxy... Don't worry on keep looking everytime, you'll know there is a new message when the option starts blink like this: {screen.color.blink}5)MENSAGENS{screen.color.end}"
@@ -217,7 +217,7 @@ def tutorial():
               '....S)SAVE....................C)SETTINGS...............X)QUIT GAME.........'
     screen.screengame(bar, screename, text, optiontitle, options)
 
-    while screen.entrada is not '3':
+    while screen.inpt is not '3':
         screen.screengame(bar, screename, text, optiontitle, options)
 
     screename = 'STEORA'
@@ -287,7 +287,7 @@ def tutorial():
               '....S)SAVE....................C)SETTINGS...............X)QUIT GAME.........'
     screen.screengame(bar, screename, text, optiontitle, options)
 
-    while screen.entrada is not '5':
+    while screen.inpt is not '5':
         screen.screengame(bar, screename, text, optiontitle, options)
 
     player.newmessage = False
@@ -312,10 +312,10 @@ def tutorial():
               '....S)SAVE....................C)SETTINGS...............X)QUIT GAME.........'
     screen.screengame(bar, screename, text, optiontitle, options)
 
-    while screen.entrada is not '1':
+    while screen.inpt is not '1':
         screen.screengame(bar, screename, text, optiontitle, options)
 
-    text = locais.local[player.system][player.planet][player.city]["mapa"]
+    text = local.local[player.system][player.planet][player.city]["map"]
 
     optiontitle=f'{player.city}'
 
@@ -340,12 +340,12 @@ def game_loop():
                              '.............................(ENTER TO GO BACK)............................\n' \
                              '...........................................................................'
                     screen.screenfree(screename, text, optiontitle, options)
-                    if screen.entrada is '':
+                    if screen.inpt is '':
                         seeskils()
-                    elif screen.entrada.upper() in list(player.skills.keys()):
-                        if habilidades.skills[screen.entrada.upper()]['active'] is True:
-                            if player.SP >= habilidades.skills[screen.entrada.upper()]['skillcost'][player.skills[screen.entrada.upper()]]:
-                                exec(habilidades.skills[screen.entrada.upper()]['skilluse'][player.skills[screen.entrada.upper()]])
+                    elif screen.inpt.upper() in list(player.skills.keys()):
+                        if habilidades.skills[screen.inpt.upper()]['active'] is True:
+                            if player.SP >= habilidades.skills[screen.inpt.upper()]['skillcost'][player.skills[screen.inpt.upper()]]:
+                                exec(habilidades.skills[screen.inpt.upper()]['skilluse'][player.skills[screen.inpt.upper()]])
                                 player.update()
                                 seeskils()
                             else:
@@ -386,9 +386,9 @@ def game_loop():
                          '...........................................................................\n' \
                          '.......................................................0)BACK..............'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada is '1':
+                if screen.inpt is '1':
                     useskils()
-                elif screen.entrada is '0':
+                elif screen.inpt is '0':
                     character()
                 else:
                     seeskils()
@@ -417,7 +417,7 @@ def game_loop():
                          '.......................................................0)BACK..............'
                 screen.screenfree(screename, text, optiontitle, options)
 
-                if screen.entrada is '1':
+                if screen.inpt is '1':
                     if player.atribpoints >= (math.floor((math.sqrt(1+4*player.dexb)-1)/2)+1):
                         player.atribpointsspent += (math.floor((math.sqrt(1+4*player.dexb)-1)/2)+1)
                         player.dexb += 1
@@ -425,7 +425,7 @@ def game_loop():
                         distributeattr()
                     elif player.atribpoints < (math.floor((math.sqrt(1+4*player.dexb)-1)/2)+1):
                         distributeattr()
-                elif screen.entrada is '2':
+                elif screen.inpt is '2':
                     if player.atribpoints >= (math.floor((math.sqrt(1+4*player.agib)-1)/2)+1):
                         player.atribpointsspent += (math.floor((math.sqrt(1+4*player.agib)-1)/2)+1)
                         player.agib += 1
@@ -433,7 +433,7 @@ def game_loop():
                         distributeattr()
                     elif player.atribpoints < (math.floor((math.sqrt(1+4*player.agib)-1)/2)+1):
                         distributeattr()
-                elif screen.entrada is '3':
+                elif screen.inpt is '3':
                     if player.atribpoints >= (math.floor((math.sqrt(1+4*player.intb)-1)/2)+1):
                         player.atribpointsspent += (math.floor((math.sqrt(1+4*player.intb)-1)/2)+1)
                         player.intb += 1
@@ -441,7 +441,7 @@ def game_loop():
                         distributeattr()
                     elif player.atribpoints < (math.floor((math.sqrt(1+4*player.intb)-1)/2)+1):
                         distributeattr()
-                elif screen.entrada is '4':
+                elif screen.inpt is '4':
                     if player.atribpoints >= (math.floor((math.sqrt(1+4*player.lukb)-1)/2)+1):
                         player.atribpointsspent += (math.floor((math.sqrt(1+4*player.lukb)-1)/2)+1)
                         player.lukb += 1
@@ -449,7 +449,7 @@ def game_loop():
                         distributeattr()
                     elif player.atribpoints < (math.floor((math.sqrt(1+4*player.lukb)-1)/2)+1):
                         distributeattr()
-                elif screen.entrada is '0':
+                elif screen.inpt is '0':
                     character()
                 else:
                     distributeattr()
@@ -477,23 +477,35 @@ def game_loop():
                       '.......................................................0)BACK..............'
             screen.screenfree(screename, text, optiontitle, options)
 
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 seeskils()
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 distributeattr()
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 return
             else:
                 character()
 
         def walk():
+
+            def place():
+                print('WIP')
+                game()
+
             screename = f'STEORA'
 
-            text = locais.local[player.system][player.planet][player.city]['mapa']
+            text = local.local[player.system][player.planet][player.city]['map']
 
             optiontitle = f'{player.city}'
-            options = locais.local[player.system][player.planet][player.city]['options']
+            options = local.local[player.system][player.planet][player.city]['options']
             screen.screenfree(screename, text, optiontitle, options)
+            while screen.inpt not in local.local[player.system][player.planet][player.city]["available"]:
+                screen.screenfree(screename, text, optiontitle, options)
+            if screen.inpt is "0":
+                game()
+            else:
+                player.local = local.local[player.system][player.planet][player.city]["places"][int(screen.inpt)-1]
+                place()
 
         def backpack():
 
@@ -504,9 +516,9 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada.lower().capitalize() in (list(player.items.keys()) or player.eqp1 or player.eqp2 or player.eqp3 or player.eqp4 or player.eqp5 or player.eqp6 or player.weapon or player.shield):
+                if screen.inpt.lower().capitalize() in (list(player.items.keys()) or player.eqp1 or player.eqp2 or player.eqp3 or player.eqp4 or player.eqp5 or player.eqp6 or player.weapon or player.shield):
                     print('Em costrução')
-                elif screen.entrada is '':
+                elif screen.inpt is '':
                     backpack()
                 else:
                     itemdetail()
@@ -518,9 +530,9 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada.lower().capitalize() in (list(player.items.keys()) or player.eqp1 or player.eqp2 or player.eqp3 or player.eqp4 or player.eqp5 or player.eqp6 or player.weapon or player.shield):
+                if screen.inpt.lower().capitalize() in (list(player.items.keys()) or player.eqp1 or player.eqp2 or player.eqp3 or player.eqp4 or player.eqp5 or player.eqp6 or player.weapon or player.shield):
                     print('Em costrução')
-                elif screen.entrada is '':
+                elif screen.inpt is '':
                     backpack()
                 else:
                     itemuse()
@@ -532,9 +544,9 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada.lower().capitalize() in list(player.items.keys()):
+                if screen.inpt.lower().capitalize() in list(player.items.keys()):
                     print('Em costrução')
-                elif screen.entrada is '':
+                elif screen.inpt is '':
                     backpack()
                 else:
                     itemequip()
@@ -547,11 +559,11 @@ def game_loop():
                              '.............................(ENTER TO GO BACK)............................\n' \
                              '...........................................................................'
                     screen.screenfree(screename, text, optiontitle, options)
-                    if screen.entrada is '':
+                    if screen.inpt is '':
                         itemthrow()
                     else:
                         try:
-                            qtd = abs(int(screen.entrada))
+                            qtd = abs(int(screen.inpt))
                             player.items[item] -= qtd
                             if player.items[item] <= 0:
                                 del player.items[item]
@@ -567,14 +579,14 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                item = screen.entrada.lower().capitalize()
+                item = screen.inpt.lower().capitalize()
                 if item in list(player.items.keys()):
                     if player.items[item] is 1:
                         del player.items[item]
                         backpack()
                     else:
                         itemthrowqt()
-                elif screen.entrada is '':
+                elif screen.inpt is '':
                     backpack()
                 else:
                     itemthrow()
@@ -602,19 +614,19 @@ def game_loop():
                      '.......................................................0)BACK..............'
             screen.screenfree(screename, text, optiontitle, options)
 
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 itemdetail()
 
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 itemequip()
 
-            elif screen.entrada is '3':
+            elif screen.inpt is '3':
                 itemuse()
 
-            elif screen.entrada is '4':
+            elif screen.inpt is '4':
                 itemthrow()
 
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 game()
             else:
                 backpack()
@@ -628,11 +640,11 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada is '':
+                if screen.inpt is '':
                     messages()
                 else:
                     try:
-                        id = abs(int(screen.entrada))
+                        id = abs(int(screen.inpt))
                         if id in list(player.messages.keys()):
                             text = f'''Mensagem de {player.messages[id]['de']}: {player.messages[id]['msg']}'''
                             options = '...........................................................................\n' \
@@ -684,11 +696,11 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada is '':
+                if screen.inpt is '':
                     messages()
                 else:
                     try:
-                        id = abs(int(screen.entrada))
+                        id = abs(int(screen.inpt))
                         if id in list(player.readmessages.keys()):
                             text = f'''Message from {player.readmessages[id]['from']}: {player.readmessages[id]['message']}'''
                             options = '...........................................................................\n' \
@@ -727,7 +739,7 @@ def game_loop():
                      '.......................................................0)BACK..............'
             screen.screenfree(screename, text, optiontitle, options)
 
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 if len(player.messages) is 0:
                     text = f'There are no new message!'
                     options = '...........................................................................\n' \
@@ -738,9 +750,9 @@ def game_loop():
                     messages()
                 else:
                     readnewmessage(text)
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 readoldmessage()
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 game()
             else:
                 messages()
@@ -754,11 +766,11 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada is '':
+                if screen.inpt is '':
                     quests()
                 else:
                     try:
-                        id = abs(int(screen.entrada))
+                        id = abs(int(screen.inpt))
                         if id in list(player.quests.keys()):
                             text = f'''Quest {player.quests[id]['questname']}! Progress: {player.quests[id]['questprogress']}. {player.quests[id]['questdescription']}'''
                             options = '...........................................................................\n' \
@@ -792,11 +804,11 @@ def game_loop():
                          '.............................(ENTER TO GO BACK)............................\n' \
                          '...........................................................................'
                 screen.screenfree(screename, text, optiontitle, options)
-                if screen.entrada is '':
+                if screen.inpt is '':
                     quests()
                 else:
                     try:
-                        id = abs(int(screen.entrada))
+                        id = abs(int(screen.inpt))
                         if id in list(player.questsdone.keys()):
                             text = f'''Quest {player.quests[id]['questname']}! Progress: {player.quests[id]['questprogress']}. {player.quests[id]['questdescription']}'''
                             options = '...........................................................................\n' \
@@ -834,7 +846,7 @@ def game_loop():
                       '.......................................................0)BACK..............'
             screen.screenfree(screename, text, optiontitle, options)
 
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 if len(player.quests) is 0:
                     text = f'There are no accepted quests!'
                     options = '...........................................................................\n' \
@@ -845,9 +857,9 @@ def game_loop():
                     quests()
                 else:
                     questdetail(text)
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 questsfinished()
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 game()
             else:
                 quests()
@@ -873,7 +885,7 @@ def game_loop():
                      '...........................................................................\n' \
                      '...............................0)BACK......................................'
             screen.screenfree(screename, text, optiontitle, options)
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 if title.cfg.musica == True:
                     mixer.music.pause()
                     title.cfg.musica = False
@@ -884,7 +896,7 @@ def game_loop():
                     pickle.dump(title.cfg.musica, fp)
                     pickle.dump(title.cfg.autosave, fp)
                 config()
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 if title.cfg.autosave == True:
                     title.cfg.autosave = False
                 else:
@@ -893,7 +905,7 @@ def game_loop():
                     pickle.dump(title.cfg.musica, fp)
                     pickle.dump(title.cfg.autosave, fp)
                 config()
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 game()
             else:
                 config()
@@ -1049,11 +1061,11 @@ def game_loop():
                      '...........................................................................'
             screen.screencombat(bar, screename, text, optiontitle, options)
 
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 attack()
-#            elif screen.entrada is '2':
+#            elif screen.inpt is '2':
 #                itemuse()
-            elif screen.entrada is '0':
+            elif screen.inpt is '0':
                 runaway()
             else:
                 combat()
@@ -1075,23 +1087,23 @@ def game_loop():
                      '...........................................................................\n' \
                      '....S)SAVE....................C)SETTINGS...............X)QUIT GAME.........'
             screen.screengame(bar, screename, text, optiontitle, options)
-            if screen.entrada is '1':
+            if screen.inpt is '1':
                 walk()
-            elif screen.entrada is '2':
+            elif screen.inpt is '2':
                 backpack()
-            elif screen.entrada is '3':
+            elif screen.inpt is '3':
                 character()
-            elif screen.entrada is '4':
+            elif screen.inpt is '4':
                 quests()
-            elif screen.entrada is '5':
+            elif screen.inpt is '5':
                 messages()
-            elif screen.entrada is '9':
+            elif screen.inpt is '9':
                 combat()
-            elif screen.entrada in ['s','S']:
+            elif screen.inpt in ['s','S']:
                 save()
-            elif screen.entrada in ['c','C']:
+            elif screen.inpt in ['c','C']:
                 config()
-            elif screen.entrada in ['x','X']:
+            elif screen.inpt in ['x','X']:
                 if title.cfg.autosave is True:
                     with open(player.name.lower() + '.p', 'wb') as fp:
                         pickle.dump(player.name, fp)
@@ -1194,7 +1206,7 @@ if title.loaded is True:
         player.karma = pickle.load(fp)
     game_loop()
 
-if screen.entrada is '9':
+if screen.inpt is '9':
     game_loop()
 
 else:

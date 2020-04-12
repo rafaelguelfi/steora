@@ -116,8 +116,8 @@ def screen(screename, text, optiontitle, options):
                 print(frame['V-right']+OPTIONTITLE+frame['V-left'])
                 OPTIONS()
                 print(frame['down-left-corner']+FOOTNOTE+frame['down-right-corner'])
-                global entrada
-                entrada=input('> ')
+                global inpt
+                inpt=input('> ')
         print()
 
 def screengame(bar,screename, text, optiontitle, options):
@@ -152,8 +152,8 @@ def screengame(bar,screename, text, optiontitle, options):
                 print(frame['V-right']+OPTIONTITLE+frame['V-left'])
                 OPTIONS()
                 print(frame['down-left-corner']+FOOTNOTE+frame['down-right-corner'])
-                global entrada
-                entrada=input('> ')
+                global inpt
+                inpt=input('> ')
         print()
 
 def screencombat(bar,screename, text, optiontitle, options):
@@ -185,8 +185,8 @@ def screencombat(bar,screename, text, optiontitle, options):
                 print(frame['V-right']+OPTIONTITLE+frame['V-left'])
                 OPTIONS()
                 print(frame['down-left-corner']+FOOTNOTE+frame['down-right-corner'])
-                global entrada
-                entrada=input('> ')
+                global inpt
+                inpt=input('> ')
         print()
 
 def screenfree(screename, text, optiontitle, options):
@@ -216,8 +216,8 @@ def screenfree(screename, text, optiontitle, options):
                 print(frame['V-right']+OPTIONTITLE+frame['V-left'])
                 OPTIONS()
                 print(frame['down-left-corner']+FOOTNOTE+frame['down-right-corner'])
-                global entrada
-                entrada=input('> ')
+                global inpt
+                inpt=input('> ')
         print()
 
 def screenwalk(screename, text, optiontitle, options):
@@ -248,8 +248,8 @@ def screenwalk(screename, text, optiontitle, options):
                 print(frame['V-right']+OPTIONTITLE+frame['V-left'])
                 OPTIONS()
                 print(frame['down-left-corner']+FOOTNOTE+frame['down-right-corner'])
-                global entrada
-                entrada=input('> ')
+                global inpt
+                inpt=input('> ')
         print()
 
 os.system('clear')

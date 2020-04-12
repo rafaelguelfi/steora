@@ -44,7 +44,7 @@ def setting():
              '............................ENTER TO GO BACK...............................\n' \
              '...........................................................................'
     screen.screenfree(screename, text, optiontitle, options)
-    if screen.entrada is '1':
+    if screen.inpt is '1':
         if cfg.music==True:
             mixer.music.stop()
             cfg.music=False
@@ -55,7 +55,7 @@ def setting():
             pickle.dump(cfg.music, fp)
             pickle.dump(cfg.autosave, fp)
         setting()
-    elif screen.entrada is '2':
+    elif screen.inpt is '2':
         if cfg.autosave==True:
             cfg.autosave=False
         else:
@@ -64,7 +64,7 @@ def setting():
             pickle.dump(cfg.music, fp)
             pickle.dump(cfg.autosave, fp)
         setting()
-    elif screen.entrada is '':
+    elif screen.inpt is '':
         titlescreen()
     else:
         setting()
@@ -97,7 +97,7 @@ def titlescreen():
 
     screen.screen(screename, text, optiontitle, options)
 
-    if screen.entrada is '1':
+    if screen.inpt is '1':
         screename = ''
 
         text = screen.color.lightcyan + logo + screen.color.end + stars
@@ -111,7 +111,7 @@ def titlescreen():
 
         screen.screen(screename, text, optiontitle, options)
 
-        if screen.entrada is '1':
+        if screen.inpt is '1':
 
             screename = f'INTRO'
 
@@ -138,11 +138,11 @@ def titlescreen():
                      '...........................................................................'
 
             screen.screen(screename, text, optiontitle, options)
-            while screen.entrada is '':
+            while screen.inpt is '':
                 optiontitle = 'INVALID NAME!'
                 screen.screen(screename, text, optiontitle, options)
             global playername
-            playername = screen.entrada
+            playername = screen.inpt
 
             def racechoice():
                 text=f"{playername}! Right... And which race you'll choose? Each race has a bonus in certain attribute and starts in a different planet!                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Races with bonus in Agility: Humans, Kal-shon, Zayolin                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Races with bonus in Dexterity: Alnits, Droides, Zorahtos                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Races with bonus in Intelligence: Kaitos, Lattuns, Ophidianos                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Races with bonus in Luck: Destanis, Nephinos, Svastos                            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Choose a race to know more, don't worry, you can come back to here later!"
@@ -154,12 +154,12 @@ def titlescreen():
                          '.....10)DESTANIS...............11)NEPHINOS.................12)SVASTOS......'
                 screen.screen(screename, text, optiontitle, options)
                 global playerrace
-                playerrace = screen.entrada
+                playerrace = screen.inpt
 
-                while screen.entrada not in ['1','2','3','4','5','6','7','8','9','10','11','12']:
+                while screen.inpt not in ['1','2','3','4','5','6','7','8','9','10','11','12']:
                     optiontitle = 'INVALID OPTION'
                     screen.screen(screename, text, optiontitle, options)
-                    playerrace = screen.entrada
+                    playerrace = screen.inpt
 
                 def racechoice2(playerrace):
                     screename = f'{races.races[playerrace]["name"]}'
@@ -177,13 +177,13 @@ def titlescreen():
                     global playerssystem
                     global playerscity
                     global choosenrace
-                    if screen.entrada is '1':
+                    if screen.inpt is '1':
                         playerscity=(races.races[playerrace]["city"]).upper()
                         playersplanet=(races.races[playerrace]["planet"]).upper()
                         playerssystem=(races.races[playerrace]["system"]).upper()
                         choosenrace=races.races[playerrace]["singularname"]
 
-                    elif screen.entrada is '2':
+                    elif screen.inpt is '2':
                         screename = f'{races.races[playerrace]["name"]}: SKILLS'
 
                         text = f'WIP'
@@ -195,7 +195,7 @@ def titlescreen():
                                  '...........................................................................\n' \
                                  '...........................................................................'
                         screen.screen(screename, text, optiontitle, options)
-                        if screen.entrada is '1':
+                        if screen.inpt is '1':
                             playerscity = (races.races[playerrace]["city"]).upper()
                             playersplanet = races.races[playerrace]["planet"]
                             playerssystem = races.races[playerrace]["system"]
@@ -203,7 +203,7 @@ def titlescreen():
 
                         else:
                             racechoice2(playerrace)
-                    elif screen.entrada is '3':
+                    elif screen.inpt is '3':
                         screename = f'{races.races[playerrace]["name"]}: CULTURE'
 
                         text = f'The {races.races[playerrace]["name"]} {races.races[playerrace]["culture"]}'
@@ -215,7 +215,7 @@ def titlescreen():
                                  '...........................................................................\n' \
                                  '...........................................................................'
                         screen.screen(screename, text, optiontitle, options)
-                        if screen.entrada is '1':
+                        if screen.inpt is '1':
                             playerscity = (races.races[playerrace]["city"]).upper()
                             playersplanet = races.races[playerrace]["planet"]
                             playerssystem = races.races[playerrace]["system"]
@@ -228,7 +228,7 @@ def titlescreen():
                 racechoice2(playerrace)
             racechoice()
 
-        elif screen.entrada is '2':
+        elif screen.inpt is '2':
             screename = f'STEORA'
             text = f'What is your name?'
             optiontitle = 'LOAD GAME'
@@ -238,19 +238,19 @@ def titlescreen():
                      '...........................................................................'
 
             screen.screen(screename, text, optiontitle, options)
-            while screen.entrada is '':
+            while screen.inpt is '':
                 optiontitle = 'INVALID NAME!'
                 screen.screen(screename, text, optiontitle, options)
-            if os.path.exists(screen.entrada.lower() + '.p'):
+            if os.path.exists(screen.inpt.lower() + '.p'):
                 loaded=True
-                savefile=f'{screen.entrada.lower()}.p'
+                savefile=f'{screen.inpt.lower()}.p'
             else:
                 titlescreen()
         else:
             titlescreen()
-    elif screen.entrada is '2':
+    elif screen.inpt is '2':
         setting()
-    elif screen.entrada is '3':
+    elif screen.inpt is '3':
         screename ='HELP'
         text= 'STEORA RPG its a text based game with the goal of space exploration,' \
                ' the options of action will appear bellow the main text.'
@@ -261,7 +261,7 @@ def titlescreen():
                  '...........................................................................'
         screen.screen(screename, text, optiontitle, options)
         titlescreen()
-    elif screen.entrada is '4':
+    elif screen.inpt is '4':
         screename ='ABOUT'
         text= 'This is a working in progress project.'
         optiontitle=''
@@ -271,9 +271,9 @@ def titlescreen():
                  '...........................................................................'
         screen.screen(screename, text, optiontitle, options)
         titlescreen()
-    elif screen.entrada is '5':
+    elif screen.inpt is '5':
         sys.exit()
-    elif screen.entrada is '9':
+    elif screen.inpt is '9':
         return
     else:
         titlescreen()
